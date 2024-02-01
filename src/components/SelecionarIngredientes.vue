@@ -19,7 +19,10 @@
     <p class="paragrafo dica">
       *Atenção: consideramos que você tem em casa sal, pimenta e água.
     </p>
-    <BotaoPrincipalVue texto="Buscar receitas!" />
+    <BotaoPrincipalVue 
+      texto="Buscar receitas!" 
+      @click="$emit('buscarReceitas')"
+    />
   </section>
 </template>
 
@@ -30,6 +33,7 @@ import CardCategoria from './CardCategoria.vue';
 import BotaoPrincipalVue from './BotaoPrincipal.vue';
 
 export default {
+  name: 'SelecionarIngredientes',
   data() {
     return {
       categorias: [] as ICategoria[]
@@ -39,7 +43,7 @@ export default {
     this.categorias = await obterCategorias();
   },
   components: { CardCategoria, BotaoPrincipalVue },
-  emits: ['adicionarIngrediente', 'removerIngrediente']
+  emits: ['adicionarIngrediente', 'removerIngrediente', 'buscarReceitas']
 }
 </script>
 
